@@ -66,21 +66,6 @@ class Game:
             self.snake_direction = "right"
 
 
-def get_random_food_pos():
-    x = random.randint(- int(Config.WIDTH / 2) + Config.FOOD_SIZE, int(Config.WIDTH / 2) - Config.FOOD_SIZE)
-    y = random.randint(- int(Config.HEIGHT / 2) + Config.FOOD_SIZE, int(Config.HEIGHT / 2) - Config.FOOD_SIZE)
-    return x, y
-
-
-def get_distance(pos1, pos2):
-    x1, y1 = pos1
-    x2, y2 = pos2
-
-    distance = (((y2 - y1) ** 2) + ((x2 - x1) ** 2)) ** 0.5  # Pythogorean theorem
-
-    return distance
-
-
 class Food:
     score = 0
 
@@ -94,6 +79,21 @@ class Food:
             food_turtle.goto(self.position)
             return True
         return False
+
+
+def get_random_food_pos():
+    x = random.randint(- int(Config.WIDTH / 2) + Config.FOOD_SIZE, int(Config.WIDTH / 2) - Config.FOOD_SIZE)
+    y = random.randint(- int(Config.HEIGHT / 2) + Config.FOOD_SIZE, int(Config.HEIGHT / 2) - Config.FOOD_SIZE)
+    return x, y
+
+
+def get_distance(pos1, pos2):
+    x1, y1 = pos1
+    x2, y2 = pos2
+
+    distance = (((y2 - y1) ** 2) + ((x2 - x1) ** 2)) ** 0.5  # Pythogorean theorem
+
+    return distance
 
 
 def game_loop(game: Game, snake: list, food: Food, snake_turtle, food_turtle, screen):
